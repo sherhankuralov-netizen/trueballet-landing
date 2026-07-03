@@ -44,19 +44,38 @@
         });
     }
 
-    /* ---------- 3. Мобильная фиксированная кнопка: прятать у формы/футера ---------- */
+    /* ---------- 3. Мобильная фиксированная кнопка ----------
+       Прячем, пока пользователь видит hero (там уже есть своя кнопка)
+       или пока дошёл до формы. Показываем только в промежутке. */
     var mobileCta = document.querySelector(".mobile-cta");
+    var heroSection = document.getElementById("top");
     var formSection = document.getElementById("form");
-    if (mobileCta && formSection && "IntersectionObserver" in window) {
+
+    if (mobileCta && heroSection && "IntersectionObserver" in window) {
+        var heroVisible = true;
+        var formVisible = false;
+
+        function updateMobileCta() {
+            mobileCta.classList.toggle("hidden", heroVisible || formVisible);
+        }
+
         var ctaObserver = new IntersectionObserver(
             function (entries) {
                 entries.forEach(function (entry) {
-                    mobileCta.classList.toggle("hidden", entry.isIntersecting);
+                    if (entry.target === heroSection) {
+                        heroVisible = entry.isIntersecting;
+                    } else if (entry.target === formSection) {
+                        formVisible = entry.isIntersecting;
+                    }
                 });
+                updateMobileCta();
             },
             { threshold: 0.05 }
         );
-        ctaObserver.observe(formSection);
+
+        ctaObserver.observe(heroSection);
+        if (formSection) ctaObserver.observe(formSection);
+        updateMobileCta();
     }
 
     /* ---------- 4. Обработка формы → WhatsApp ---------- */

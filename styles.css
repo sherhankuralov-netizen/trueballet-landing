@@ -834,9 +834,19 @@ a {
     .contact-card {
         padding: 26px 20px;
     }
-    /* место под фиксированную кнопку */
+    /* hero: убираем вертикальное центрирование — контент начинается сверху,
+       без большой пустой зоны над тегом */
+    .hero {
+        min-height: auto;
+        align-items: flex-start;
+        padding: 90px 0 64px;
+    }
+    .hero__tag {
+        margin-bottom: 20px;
+    }
+    /* запас снизу, чтобы фиксированная кнопка не перекрывала последний контент */
     .footer {
-        padding-bottom: 110px;
+        padding-bottom: 96px;
     }
     .mobile-cta {
         display: block;
@@ -852,6 +862,9 @@ a {
 @media (max-width: 380px) {
     .container {
         padding: 0 18px;
+    }
+    .hero {
+        padding-top: 68px;
     }
     .hero__tag {
         font-size: 0.72rem;
