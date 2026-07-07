@@ -389,27 +389,16 @@ a {
     position: relative;
     aspect-ratio: 4 / 5;
     border-radius: var(--radius);
-    background:
-        linear-gradient(145deg, #2a2622 0%, #4a4139 45%, #6b5d4c 100%);
     box-shadow: var(--shadow);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
     overflow: hidden;
+    background: var(--pearl-dim);
 }
-.founder__photo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(70% 60% at 50% 30%, rgba(201, 168, 76, 0.18), transparent 70%);
-}
-.founder__photo-hint {
-    position: relative;
-    z-index: 2;
-    color: rgba(245, 240, 235, 0.6);
-    font-size: 0.82rem;
-    padding: 16px;
-    text-align: center;
+.founder__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
 }
 .founder__body p {
     margin-bottom: 18px;
