@@ -86,11 +86,15 @@ python3 -m http.server 8000
 
 ## Запуск в прод: домен, аналитика, реклама
 
-### Шаг 1. Свой домен (trueballet.kz — уже прописан в репозитории)
-Файл `CNAME` и все URL уже обновлены под **trueballet.kz**. Осталось настроить DNS у регистратора:
+### Шаг 1. Свой домен (trueballet.kz)
+DNS-записи на PS.kz уже настроены (A → GitHub + www CNAME). Пока реестр `.kz` отдаёт **NXDOMAIN**, кастомный домен **временно отключён** в GitHub Pages — иначе `github.io` редиректит на мёртвый `trueballet.kz`.
 
-1. Зайди в панель DNS у регистратора (PS.KZ / Hoster.KZ).
-2. Пропиши записи:
+Когда `http://trueballet.kz` начнёт открываться:
+1. Добавь в корень файл `CNAME` с одной строкой: `trueballet.kz`
+2. В GitHub → Settings → Pages укажи Custom domain `trueballet.kz` и включи **Enforce HTTPS**
+3. Замени URL `github.io/...` на `https://trueballet.kz/` в `index.html`, `robots.txt`, `sitemap.xml`
+
+DNS-записи у регистратора (на будущее / проверка):
 
 | Тип | Имя / Host | Значение |
 |---|---|---|
@@ -100,10 +104,7 @@ python3 -m http.server 8000
 | **A** | `@` | `185.199.111.153` |
 | **CNAME** | `www` | `sherhankuralov-netizen.github.io` |
 
-3. В GitHub → Settings → Pages → Custom domain укажи `trueballet.kz` (или дождись автоопределения из `CNAME`) и включи **Enforce HTTPS**.
-4. DNS обновляется обычно 15 мин – 2 часа (иногда до суток). HTTPS-сертификат выпускается автоматически после того, как DNS «зелёный».
-
-Проверка: `https://trueballet.kz` должен открыть лендинг.
+NS домена: `ns1.ps.kz`, `ns2.ps.kz`, `ns3.ps.kz`.
 
 ### Шаг 2. Google Analytics / Google Ads (уже подготовлено)
 1. Заведи ресурс **GA4** в [analytics.google.com](https://analytics.google.com) → получи ID вида `G-XXXXXXXXXX`.

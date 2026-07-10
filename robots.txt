@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trueballet.kz/sitemap.xml
+Sitemap: https://sherhankuralov-netizen.github.io/trueballet-landing/sitemap.xml
