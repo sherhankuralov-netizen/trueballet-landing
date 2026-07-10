@@ -203,24 +203,6 @@ a {
     max-width: 900px;
 }
 
-.hero__logo {
-    display: inline-block;
-    margin-bottom: 22px;
-    line-height: 0;
-    transition: transform 0.3s var(--ease);
-}
-.hero__logo:hover {
-    transform: translateY(-2px);
-}
-.hero__logo img {
-    display: block;
-    width: clamp(64px, 16vw, 88px);
-    height: auto;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.55);
-}
-
 .hero__tag {
     display: inline-block;
     color: var(--gold);
@@ -762,18 +744,13 @@ a {
     text-align: center;
     padding: 56px 0 90px;
 }
-.footer__logo {
-    display: inline-block;
-    margin-bottom: 20px;
-    line-height: 0;
-}
-.footer__logo img {
-    display: block;
-    width: clamp(56px, 14vw, 72px);
-    height: auto;
-    margin: 0 auto;
-    border-radius: 50%;
-    background: #fff;
+.footer__brand {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
 }
 .footer__text {
     font-size: 0.9rem;
@@ -896,12 +873,6 @@ a {
     }
     .hero__tag {
         margin-bottom: 20px;
-    }
-    .hero__logo {
-        margin-bottom: 16px;
-    }
-    .hero__logo img {
-        width: 64px;
     }
     /* запас снизу, чтобы фиксированная кнопка не перекрывала последний контент */
     .footer {
