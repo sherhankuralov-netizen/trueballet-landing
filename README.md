@@ -86,16 +86,24 @@ python3 -m http.server 8000
 
 ## Запуск в прод: домен, аналитика, реклама
 
-### Шаг 1. Свой домен (подключение к GitHub Pages)
-1. Купи домен: `.kz` — на **PS.KZ / Hoster.KZ**; `.com` — на **Namecheap / Cloudflare**.
-2. В корень репозитория добавь файл `CNAME` с одной строкой — твой домен (например `trueballet.kz`).
-3. У регистратора пропиши DNS:
-   - 4 записи **A** на IP GitHub Pages: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - запись **CNAME** для `www` → `sherhankuralov-netizen.github.io`
-4. В GitHub → Settings → Pages укажи домен и включи **Enforce HTTPS** (сертификат выпустится автоматически, ~час).
-5. **После подключения домена** замени старый URL `https://sherhankuralov-netizen.github.io/trueballet-landing/` на новый в: `index.html` (canonical, og:url, og:image, twitter:image, Schema.org), `robots.txt`, `sitemap.xml`.
+### Шаг 1. Свой домен (trueballet.kz — уже прописан в репозитории)
+Файл `CNAME` и все URL уже обновлены под **trueballet.kz**. Осталось настроить DNS у регистратора:
 
-DNS обновляется обычно 15 мин – 2 часа (иногда до суток).
+1. Зайди в панель DNS у регистратора (PS.KZ / Hoster.KZ).
+2. Пропиши записи:
+
+| Тип | Имя / Host | Значение |
+|---|---|---|
+| **A** | `@` (или пусто / trueballet.kz) | `185.199.108.153` |
+| **A** | `@` | `185.199.109.153` |
+| **A** | `@` | `185.199.110.153` |
+| **A** | `@` | `185.199.111.153` |
+| **CNAME** | `www` | `sherhankuralov-netizen.github.io` |
+
+3. В GitHub → Settings → Pages → Custom domain укажи `trueballet.kz` (или дождись автоопределения из `CNAME`) и включи **Enforce HTTPS**.
+4. DNS обновляется обычно 15 мин – 2 часа (иногда до суток). HTTPS-сертификат выпускается автоматически после того, как DNS «зелёный».
+
+Проверка: `https://trueballet.kz` должен открыть лендинг.
 
 ### Шаг 2. Google Analytics / Google Ads (уже подготовлено)
 1. Заведи ресурс **GA4** в [analytics.google.com](https://analytics.google.com) → получи ID вида `G-XXXXXXXXXX`.
