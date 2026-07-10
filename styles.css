@@ -764,13 +764,18 @@ a {
     text-align: center;
     padding: 56px 0 90px;
 }
-.footer__brand {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 0.06em;
-    margin-bottom: 16px;
+.footer__logo {
+    display: inline-block;
+    margin-bottom: 20px;
+    line-height: 0;
+}
+.footer__logo img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #fff;
 }
 .footer__text {
     font-size: 0.9rem;
