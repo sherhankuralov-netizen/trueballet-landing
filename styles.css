@@ -205,11 +205,11 @@ a {
 
 .hero__logo {
     display: inline-block;
-    margin-bottom: 24px;
-    padding: 14px 22px 10px;
-    background: rgba(245, 240, 235, 0.96);
-    border-radius: 14px;
-    box-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.45);
+    margin-bottom: 28px;
+    padding: 16px 20px 14px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s var(--ease);
 }
 .hero__logo:hover {
@@ -217,8 +217,9 @@ a {
 }
 .hero__logo img {
     display: block;
-    width: clamp(140px, 34vw, 200px);
+    width: clamp(120px, 30vw, 168px);
     height: auto;
+    border-radius: 4px;
 }
 
 .hero__tag {
@@ -765,15 +766,16 @@ a {
 .footer__logo {
     display: inline-block;
     margin-bottom: 20px;
-    padding: 12px 18px 8px;
-    background: rgba(245, 240, 235, 0.96);
-    border-radius: 12px;
+    padding: 12px 16px 10px;
+    background: #ffffff;
+    border-radius: 14px;
 }
 .footer__logo img {
     display: block;
-    width: clamp(120px, 28vw, 160px);
+    width: clamp(100px, 24vw, 140px);
     height: auto;
     margin: 0 auto;
+    border-radius: 4px;
 }
 .footer__text {
     font-size: 0.9rem;
@@ -899,7 +901,7 @@ a {
     }
     .hero__logo {
         margin-bottom: 18px;
-        padding: 10px 16px 8px;
+        padding: 12px 14px 10px;
     }
     /* запас снизу, чтобы фиксированная кнопка не перекрывала последний контент */
     .footer {
