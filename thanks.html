@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Заявка отправлена — TrueBallet</title>
+    <meta name="description" content="Спасибо за заявку. Ерлан свяжется с вами в течение рабочего дня." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="canonical" href="https://trueballet.kz/thanks.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png" />
+
+    <script>
+        window.GTAG_ID = "G-1NFVF7814Z";
+        (function () {
+            if (!window.GTAG_ID || window.GTAG_ID.indexOf("XXXX") !== -1) return;
+            var s = document.createElement("script");
+            s.async = true;
+            s.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GTAG_ID;
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { window.dataLayer.push(arguments); };
+            window.gtag("js", new Date());
+            window.gtag("config", window.GTAG_ID);
+            window.gtag("event", "generate_lead", { method: "thanks_page" });
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .thanks {
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--black);
+            color: var(--pearl);
+            padding: 48px 24px 96px;
+        }
+        .thanks__inner { max-width: 560px; }
+        .thanks__logo {
+            display: inline-block;
+            margin-bottom: 36px;
+            padding: 12px 18px 8px;
+            background: rgba(245, 240, 235, 0.96);
+            border-radius: 12px;
+        }
+        .thanks__logo img { width: 140px; height: auto; display: block; }
+        .thanks h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+        .thanks p {
+            color: var(--muted-dark);
+            font-size: 1.08rem;
+            margin-bottom: 16px;
+        }
+        .thanks__actions { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+        .thanks a.btn { text-decoration: none; }
+        .thanks__phone { color: var(--gold); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <main class="thanks">
+        <div class="thanks__inner">
+            <a href="/" class="thanks__logo" aria-label="TrueBallet">
+                <img src="images/logo.png" alt="True Ballet" width="140" height="162" />
+            </a>
+            <h1>Заявка принята</h1>
+            <p>Спасибо! Ерлан свяжется с вами в течение рабочего дня — расскажет условия и ответит на вопросы без давления.</p>
+            <p>Если WhatsApp не открылся — напишите сами:</p>
+            <p><a class="thanks__phone" href="https://wa.me/77017773684" target="_blank" rel="noopener">+7 701 777 36 84</a></p>
+            <div class="thanks__actions">
+                <a class="btn btn--gold" href="https://wa.me/77017773684" target="_blank" rel="noopener">Написать в WhatsApp</a>
+                <a class="btn" href="/" style="background:transparent;color:var(--pearl);border:1px solid rgba(201,168,76,0.4);border-radius:100px;padding:14px 28px;">Вернуться на главную</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

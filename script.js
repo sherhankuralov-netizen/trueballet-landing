@@ -154,9 +154,13 @@
             setHint("Открываем WhatsApp — подтвердите отправку сообщения…", "success");
 
             var win = window.open(url, "_blank");
-            // если поп-ап заблокирован — переходим в текущем окне
+            // страница «спасибо» — для конверсии Google Ads
+            window.setTimeout(function () {
+                window.location.href = "thanks.html";
+            }, 400);
+            // если поп-ап заблокирован — WhatsApp откроется с thanks через ссылку на странице
             if (!win) {
-                window.location.href = url;
+                /* stay: redirect to thanks still happens */
             }
         });
     }
