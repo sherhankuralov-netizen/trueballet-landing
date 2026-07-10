@@ -6,6 +6,14 @@
 
     var WHATSAPP_PHONE = "77017773684"; // номер основателя без "+" для wa.me
 
+    /* ---------- 0. Трекинг конверсий (Google Analytics / Ads) ----------
+       Безопасно: если gtag не подключён (ID не задан) — просто ничего не делает. */
+    function trackEvent(name, params) {
+        if (typeof window.gtag === "function") {
+            window.gtag("event", name, params || {});
+        }
+    }
+
     /* ---------- 1. Плавный скролл к форме ---------- */
     document.querySelectorAll(".js-scroll").forEach(function (link) {
         link.addEventListener("click", function (e) {
@@ -137,6 +145,12 @@
             var url =
                 "https://wa.me/" + WHATSAPP_PHONE + "?text=" + encodeURIComponent(message);
 
+            // конверсия: заявка отправлена
+            trackEvent("generate_lead", {
+                method: "whatsapp_form",
+                city: city
+            });
+
             setHint("Открываем WhatsApp — подтвердите отправку сообщения…", "success");
 
             var win = window.open(url, "_blank");
@@ -146,4 +160,17 @@
             }
         });
     }
+
+    /* ---------- 5. Трекинг кликов по контактам (WhatsApp / Telegram / звонок) ---------- */
+    document
+        .querySelectorAll('a[href^="https://wa.me"], a[href^="https://t.me"], a[href^="tel:"]')
+        .forEach(function (link) {
+            link.addEventListener("click", function () {
+                var href = link.getAttribute("href") || "";
+                var channel = "phone";
+                if (href.indexOf("wa.me") !== -1) channel = "whatsapp";
+                else if (href.indexOf("t.me") !== -1) channel = "telegram";
+                trackEvent("contact_click", { channel: channel });
+            });
+        });
 })();

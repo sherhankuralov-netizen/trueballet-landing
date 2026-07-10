@@ -7,9 +7,14 @@
 ## Структура
 
 ```
-├── index.html    # разметка всех 10 секций + готовый текст из ТЗ
-├── styles.css    # дизайн-система и стили (mobile-first)
-├── script.js     # отправка формы в WhatsApp, анимации, sticky-CTA
+├── index.html      # разметка всех 10 секций + мета/SEO/аналитика
+├── styles.css      # дизайн-система и стили (mobile-first)
+├── script.js       # форма → WhatsApp, анимации, sticky-CTA, трекинг конверсий
+├── favicon.svg     # иконка вкладки (монограмма TB)
+├── robots.txt      # разрешение индексации + ссылка на sitemap
+├── sitemap.xml     # карта сайта для поисковиков
+├── .nojekyll       # отключает Jekyll на GitHub Pages
+├── images/         # фото (founder, hero-hall, students-barre, stage, og-image)
 └── README.md
 ```
 
@@ -41,11 +46,8 @@ python3 -m http.server 8000
 
 ## Что нужно поменять под себя
 
-### 1. Фото (сейчас — плейсхолдеры-градиенты)
-- **Фото основателя** (Блок 4): в `index.html` найди `.founder__photo`. Замени градиентный блок на `<img src="images/erlan.jpg" alt="Ерлан Сыздыков" />` и, при желании, убери подпись-подсказку `.founder__photo-hint` в CSS.
-- **Hero и фоны:** для реальных фото (пуанты, дети у станка, светлый зал) добавь `background-image` в правила `.hero`, `.founder__photo` в `styles.css`.
-
-Рекомендованные фото по ТЗ: балетные пуанты, дети у станка, светлый зал, педагог с ребёнком, конкурсные выступления.
+### 1. Фото
+Реальные фото лежат в `images/`: `founder.jpeg` (основатель), `hero-hall.jpeg` (фон hero), `students-barre.jpeg` (философия), `stage-performance.jpeg` (достижения), `og-image.jpg` (превью ссылки). Чтобы заменить — положи файл с тем же именем или обнови `src`/`background` в `index.html` и `styles.css`.
 
 ### 2. Номер WhatsApp / телефон
 Номер `+7 701 777 36 84` указан в нескольких местах:
@@ -77,5 +79,35 @@ python3 -m http.server 8000
 - **Mobile-first** — основной трафик с телефонов.
 - **Фиксированная золотая CTA-кнопка** внизу экрана на мобайле (прячется у формы).
 - Мягкие анимации появления секций (с уважением к `prefers-reduced-motion`).
-- SEO-мета и Open Graph заполнены по ТЗ (Часть 3).
+- SEO-мета, Open Graph, Twitter Card, favicon, Schema.org, robots + sitemap.
 - Цена франшизы не указана нигде — только на звонке (по требованию ТЗ).
+
+---
+
+## Запуск в прод: домен, аналитика, реклама
+
+### Шаг 1. Свой домен (подключение к GitHub Pages)
+1. Купи домен: `.kz` — на **PS.KZ / Hoster.KZ**; `.com` — на **Namecheap / Cloudflare**.
+2. В корень репозитория добавь файл `CNAME` с одной строкой — твой домен (например `trueballet.kz`).
+3. У регистратора пропиши DNS:
+   - 4 записи **A** на IP GitHub Pages: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - запись **CNAME** для `www` → `sherhankuralov-netizen.github.io`
+4. В GitHub → Settings → Pages укажи домен и включи **Enforce HTTPS** (сертификат выпустится автоматически, ~час).
+5. **После подключения домена** замени старый URL `https://sherhankuralov-netizen.github.io/trueballet-landing/` на новый в: `index.html` (canonical, og:url, og:image, twitter:image, Schema.org), `robots.txt`, `sitemap.xml`.
+
+DNS обновляется обычно 15 мин – 2 часа (иногда до суток).
+
+### Шаг 2. Google Analytics / Google Ads (уже подготовлено)
+1. Заведи ресурс **GA4** в [analytics.google.com](https://analytics.google.com) → получи ID вида `G-XXXXXXXXXX`.
+2. В `index.html` в блоке аналитики замени `G-XXXXXXXXXX` на свой ID. Всё — счётчик заработает (до замены он не грузится).
+3. Конверсии уже настроены в `script.js` и шлют события в GA автоматически:
+   - `generate_lead` — отправлена заявка через форму (открытие WhatsApp);
+   - `contact_click` — клик по WhatsApp / Telegram / номеру телефона.
+4. В GA4 отметь `generate_lead` как **ключевое событие (конверсию)** и импортируй в Google Ads для оптимизации кампаний.
+
+### Шаг 3. Контекстная реклама (Google Ads)
+- Тексты объявлений — в ТЗ (`TrueBallet Landing Text v2.pdf`, Часть 3, варианты A/B).
+- Ключи: «франшиза школы балета», «открыть школу балета», «франшиза детская», «бизнес франшиза Казахстан».
+- Гео: города из ТЗ (Шымкент, Актобе, Усть-Каменогорск, Костанай, Атырау, Семей и др.).
+- Цель конверсии = событие `generate_lead`.
+- Отправь на модерацию (обычно несколько часов – 1 рабочий день).
